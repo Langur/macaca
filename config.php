@@ -1,0 +1,57 @@
+<?php
+/**
+ * Macacaの設定ファイル
+ * 
+ * @copyright Copyright (c) 2017-2023 Akihisa ONODA
+ * @license https://github.com/Langur/macaca/blob/master/LICENSE MIT
+ * @link https://github.com/Langur/macaca#readme
+ * @author Akihisa ONODA <akihisa.onoda@osarusystem.com>
+ */
+
+/* -------------------------------------------------------------
+ * Macaca用定義
+ * ------------------------------------------------------------- */
+define('LOADED_CONFIG', true);
+
+/* -------------------------------------------------------------
+ * PATH設定
+ * ------------------------------------------------------------- */
+define('ROOT_URI',        '/');
+define('__ABSPATH__', dirname(__FILE__) . '/');
+define('LIBPATH',  __ABSPATH__ . 'libs/');
+define('MODPATH',  __ABSPATH__ . 'modules/');
+define('ERROR_VIEW_PATH',  __ABSPATH__ . 'view/error');
+
+/* -------------------------------------------------------------
+ * PHPの設定変更
+ * ------------------------------------------------------------- */
+ini_set("include_path", get_include_path() . PATH_SEPARATOR . LIBPATH);
+
+/* -------------------------------------------------------------
+ * 環境設定
+ * ------------------------------------------------------------- */
+# SiteName
+define('SITE_NAME',                'Macaca');
+define('SITE_EMAIL',		   'webmaster@localhost');
+define('SITE_USE_OGP',             false);
+define('SITE_CACHE',               '20230105');
+
+# ERROR
+ini_set('display_errors',          false);
+ini_set('error_reporting',         E_ALL & ~E_STRICT & ~E_NOTICE & ~E_DEPRECATED);
+
+# DEBUG
+define('DEBUG_SITE',               false);
+
+/* -------------------------------------------------------------
+ * 各種ロード
+ * ------------------------------------------------------------- */
+foreach (glob(LIBPATH . '*/*.php') as $path) {
+    include $path;
+}
+foreach (glob(MODPATH . '*/class.php') as $path) {
+    require_once $path;
+}
+foreach (glob(MODPATH . '*/main.php') as $path) {
+    include $path;
+}
