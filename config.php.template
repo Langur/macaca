@@ -16,7 +16,7 @@ define('LOADED_CONFIG', true);
 /* -------------------------------------------------------------
  * PATH設定
  * ------------------------------------------------------------- */
-define('ROOT_URI',        '/');
+define('ROOT_URI',        ''); // ROOT_URIが'/'のときは''として定義すること。
 define('__ABSPATH__', dirname(__FILE__) . '/');
 define('LIBPATH',  __ABSPATH__ . 'libs/');
 define('MODPATH',  __ABSPATH__ . 'modules/');
