@@ -63,10 +63,10 @@ class EnumViewEngine
 class Kernel
 {
     // 各種パラメータの保持
-    private $parameter;
+    public $parameter;
     
     // コントローラを使用しないファイルの拡張子を指定
-    private $controlerless_filename_extension = ['css', 'js', 'jpg', 'png'];
+    public $controlerless_filename_extension = ['css', 'js', 'jpg', 'png'];
 
     // HTTPのステータスコード
     public $http_status_code = array(
