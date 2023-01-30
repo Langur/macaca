@@ -69,7 +69,7 @@ class Kernel
     private $controlerless_filename_extension = ['css', 'js', 'jpg', 'png'];
 
     // HTTPのステータスコード
-    private $http_status_code = array(
+    public $http_status_code = array(
                                     200 => 'OK',
                                     201 => 'Created',
                                     202 => 'Accepted',
@@ -87,7 +87,7 @@ class Kernel
                                     502 => 'Bad Gateway',
                                     503 => 'Service Unavailable',
                                     506 => 'Variant Also Negotiates',
-                                );
+                               );
 
 
     public function __construct()
@@ -238,7 +238,7 @@ class Kernel
      * @param int $bits
      * @return int | null
      */
-    private function setBits($value, $bits)
+    public function setBits($value, $bits)
     {
         return is_int($value) ? ($value | $bits) : null;
     }
@@ -250,7 +250,7 @@ class Kernel
      * @param int $bits
      * @return int | null
      */
-    private function unsetBits($value, $bits)
+    public function unsetBits($value, $bits)
     {
         return is_int($value) ? ($value & (ALL_BITS ^ $bits)) : null;
     }
@@ -430,7 +430,7 @@ class Kernel
         }
     }
 
-    private function execViewEngineRaw()
+    public function execViewEngineRaw()
     {
         $content_type = '';
         switch ($this->getViewFilenameExtention()) {
@@ -557,7 +557,7 @@ class Kernel
         return $result;
     }
 
-    private function convertRootUri($uri) {
+    public function convertRootUri($uri) {
         return (!empty($uri)) ? implode('', explode($this->getRootDirectory(), $uri, 2)) : '';
     }
 }
